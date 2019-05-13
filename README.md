@@ -1,6 +1,6 @@
 # Projeto `Programação III`
 
-Projeto final da matéria de programação III, tal matéria tem como finalidade realizar um projeto desenvolvido na linguágem Java. Foi proposto a realização de um Gerênciador de presentes para o dia das mães com tudo o que foi aprendido durante as aulas
+Projeto final da matéria de programação III, que tem como finalidade realizar um projeto desenvolvido na linguágem Java. Foi proposto a realização de um Gerênciador de presentes para o dia das mães com tudo o que foi aprendido durante as aulas
 
 ## Integrantes do grupo
 
