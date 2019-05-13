@@ -1,12 +1,12 @@
 package mothersday;
 
-import static java.lang.System.out;
 import mothersday.users.*;
+import mothersday.controllers.*;
 public class Main
 {
    public static void main(final String[] arguments)
    {
-        User user = new User();
+        User user = UserController.NewUser("", "");
         System.out.println("Hello main");
         System.out.println(user.toString());
    }
