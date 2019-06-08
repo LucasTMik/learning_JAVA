@@ -3,7 +3,13 @@ import mothersday.contracts.IDefaultUser;
 
 public class Mother extends User implements IDefaultUser
 {
-    public Admin() {
-        System.out.println("Hi im a Mother");
-    }
+    private User son;
+
+    
+   public User setSon(User son) 
+   {
+      return this.son = son; 
+   }
+
+    public Mother()
 }

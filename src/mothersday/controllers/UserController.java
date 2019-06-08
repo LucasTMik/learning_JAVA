@@ -4,15 +4,25 @@ import mothersday.contracts.IDefaultUser;
 
 public class UserController 
 {
-    public static User NewUser(String name, String password) 
+    public static User NewUser(String name, int password) 
     {
-        return new User();
+        return new Son(name, password);
     }
 
-    public static User SetNewAdmin(User currentUser, IDefaultUser user, User adminType) 
+    public static User[] setMother(User currentUser, User mother) 
     {
-        // return user.setAsAdmin(adminType);
-        System.out.println("creating a admin");
-        return new Admin();
+        mother.setSon(currentUser);
+        currentUser.setMother(mother);
+        return [
+            mother,
+            currentUser
+        ];
     }
+
+    private static User NewMother(String name, User son)
+    {
+        return new Mother(son);
+    }
+
+    public static Admin 
 }

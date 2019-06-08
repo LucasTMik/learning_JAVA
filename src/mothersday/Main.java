@@ -6,8 +6,8 @@ public class Main
 {
    public static void main(final String[] arguments)
    {
-        User user = UserController.NewUser("", "");
-        System.out.println("Hello main");
-        System.out.println(user.toString());
+      User test = UserController.NewUser("Lucas", 234192);
+
+      System.out.println(test);
    }
 }
