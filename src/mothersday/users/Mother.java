@@ -9,8 +9,9 @@ public class Mother extends User implements IDefaultUser
     private Son son;
     private Son asSon;
 
-    public Mother(String name, String email, int pass) {
+    public Mother(String name, String email, int pass, Son motherAsSon) {
         super(name, email, pass);
+        this.asSon = motherAsSon;
     }
 
     public Son setSon(Son son) 
@@ -21,19 +22,6 @@ public class Mother extends User implements IDefaultUser
     public Son getSon() 
     {
         return this.son;
-    }
-
-    @Override
-    public Mother getMother()
-    {
-        return this.asSon.getMother();
-    }
-
-    @Override
-    public boolean tryPass(int pass) 
-    {
-        System.out.println("Entrei");
-        return true;
     }
 
     @Override

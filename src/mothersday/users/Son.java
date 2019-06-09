@@ -4,10 +4,17 @@ import mothersday.contracts.IDefaultUser;
 public class Son extends User implements IDefaultUser
 {
 
-    private Mother mother; 
+    private Mother mother;
+    private Mother asMother;
 
     public Son(String name, String email, int pass) {
-        super(name, email, pass);            
+        super(name, email, pass);         
+    }
+
+    public Mother setAsMother(Mother asMother) 
+    {   
+        this.asMother = asMother;
+        return this.asMother;
     }
 
     public Mother setMother(Mother mother) 
@@ -18,6 +25,11 @@ public class Son extends User implements IDefaultUser
     public Mother getMother() 
     {
         return this.mother;
+    }
+
+    public Mother getAsMother() 
+    {
+        return this.asMother;
     }
 
     public boolean setMothersName(String name)
@@ -39,17 +51,10 @@ public class Son extends User implements IDefaultUser
         }
     }
 
-    @Override
-    public boolean tryPass(int pass) 
-    {
-        System.out.println("Entrei");
-        return true;
-    }
-
 
     @Override
     public String toString() 
     {
-        return this.getName();
+        return "Son";
     }
 }

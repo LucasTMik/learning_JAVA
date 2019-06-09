@@ -14,48 +14,61 @@ public class UserController
     }
 
     //CRIA USUARIO MAE PARA SON
-    public static Son setMother(Son son, String email, String name, int password) 
+    public static Son setMother(Son son, String name, String email, int password) 
     {
         //IF SON NAO TEM MAE 
         //CRIA SON SETA MAE
         //SAVE NO BANCO E RETORNA MAE
         if(son.getMother() == null) {
+            System.out.println("Nao tem mae cadastrada");
             Son motherAsSon = UserController.NewUser(name, email, password);
-            Mother mother = new Mother(name, email, password);
+            Mother mother = new Mother(name, email, password, motherAsSon);
+            motherAsSon.setAsMother(mother);
             mother.setSon(son);
             son.setMother(mother);
             return motherAsSon;
         } else {
             System.out.println("JÁ EXISTE UMA MAE COM ESTE USUARIO");
-            return son.getMother().getSon();
+            return null;
         }
     }
 
     //SET NAME E PASS E SALVA NO BANCO
-    public static boolean setName(User user, String name) 
+    public static boolean setName(User currentUser, User user, String name) 
     {
         return user.setName(name);
     }
 
-    public static boolean setPass(User user, int pass) 
+    public static boolean setPass(User currentUser, User user, int pass) 
     {
         return user.setPass(pass);
     }
+
+    public static boolean setEmail(User currentUser, User user, String email) 
+    {
+        return user.setEmail(email);
+    }
+
+    
 
 
     ////////////////////////////////////////
     //////           LOGIN            //////
     ////////////////////////////////////////
 
-    public static IDefaultUser login(String email, int pass) {
-        List<IDefaultUser> users = new ArrayList<IDefaultUser>();
-        users.add(UserController.NewUser("Lucas","email", 123));
-        users.add(UserController.NewUser("Mateus", "email",123));
-        users.add(UserController.NewUser("Tiago","email", 123));
+    public static Son login(String email, int pass) {
+        List<Son> users = new ArrayList<Son>();
 
-        for(IDefaultUser son : users) {
-            if(son.getEmail() == email && son.tryPass(pass))
-                return son.getMother();
+        Son testUser = UserController.NewUser("Lucas","lucascer", 123);
+        Son mother = UserController.setMother(testUser, "Marcia","marcer",123);
+        users.add(testUser);
+        users.add(mother);
+        users.add(UserController.NewUser("Tiago","tiagosuter", 123));
+
+
+        for(Son user : users) {
+            if(user.getEmail() == email && user.tryPass(pass)) 
+                return user;
         }
         return null;
     }

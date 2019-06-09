@@ -42,11 +42,10 @@ public class User
       return this.email;
    }
 
-
-   // public boolean tryPass(int givenPass)
-   // {
-   //    return givenPass == this.password;
-   // } 
+   public boolean tryPass(int givenPass)
+   {
+      return givenPass == this.password;
+   } 
 
    @Override
    public String toString()
