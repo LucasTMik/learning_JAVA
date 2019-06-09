@@ -4,11 +4,13 @@ import mothersday.users.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database {
+public class Database<T> {
 
-    public static List addElement(List arr, Object element) {
-        List aux = new ArrayList();
-        aux.add(element);
-        return aux;
+    private ArrayList<T> elements = new ArrayList<T>();
+
+    public ArrayList<T> addElement(T element) {
+
+        elements.add(element);
+        return elements;
     }
 }

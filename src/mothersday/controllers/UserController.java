@@ -55,17 +55,8 @@ public class UserController
     ////////////////////////////////////////
     //////           LOGIN            //////
     ////////////////////////////////////////
-
     public static Son login(String email, int pass) {
-        List<Son> users = new ArrayList<Son>();
-
-        Son testUser = UserController.NewUser("Lucas","lucascer", 123);
-        Son mother = UserController.setMother(testUser, "Marcia","marcer",123);
-        users.add(testUser);
-        users.add(mother);
-        users.add(UserController.NewUser("Tiago","tiagosuter", 123));
-
-
+        
         for(Son user : users) {
             if(user.getEmail() == email && user.tryPass(pass)) 
                 return user;

@@ -7,6 +7,7 @@ public class Son extends User implements IDefaultUser
     private Mother mother;
     private Mother asMother;
 
+
     public Son(String name, String email, int pass) {
         super(name, email, pass);         
     }
@@ -46,6 +47,15 @@ public class Son extends User implements IDefaultUser
     {
         try {
             this.mother.setPass(pass);
+        } catch(Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    public boolean setMothersEmail(String email)
+    {
+        try {
+            this.mother.setEmail(email);
         } catch(Exception err) {
             System.out.println(err);
         }

@@ -50,6 +50,6 @@ public class User
    @Override
    public String toString()
    {
-      return "I'm the Parent of users. And";
+      return "I'm the Parent of users.";
    }
 }
