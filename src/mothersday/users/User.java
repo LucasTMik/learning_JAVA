@@ -6,51 +6,24 @@ public class User
    private String name;
    private String email;
    private int password;
+   private Son asSon;
+   private Mother asMother;
+   private Admin asAdmin;
 
-   public User(String name, String email, int password)  
-   {
+   public User(String name, String email, int password, Son defaultUser) {
       this.name = name;
       this.password = password;
       this.email = email;
+      this.asSon = defaultUser;
    }
 
-   public boolean setPass(int newPass) 
-   {
-      this.password = newPass;
-      return true;
-   }  
+   public String getName() { return this.name; }
+   public String getEmail() { return this.email; }
+   public String setName(String newName) { this.name = newName; return this.name; }
+   public String setEmail(String newEmail) { this.email = newEmail; return this.email; }
+   public void setPass(int pass) { this.password = pass; }
 
-   public boolean setName(String newName) 
-   {
-      this.name = newName;
-      return true;
-   }
-
-   public boolean setEmail(String newEmail) 
-   {
-      this.email = newEmail;
-      return true;
-   }
- 
-   public String getName() 
-   {
-      return this.name;
-   }
-
-   public String getEmail() 
-   {
-      return this.email;
-   }
-
-
-   // public boolean tryPass(int givenPass)
-   // {
-   //    return givenPass == this.password;
-   // } 
-
-   @Override
-   public String toString()
-   {
-      return "I'm the Parent of users. And";
-   }
+   public Son getAsSon() { return this.asSon; }
+   public Mother getAsMother() { return this.asMother; }
+   public Admin getAsAdmin() { return this.asAdmin; }
 }
