@@ -1,6 +1,6 @@
 package mothersday.lib;
 
-import mothersday.users.*;
+import mothersday.models.*;
 
 import java.util.ArrayList;
 import java.util.List;

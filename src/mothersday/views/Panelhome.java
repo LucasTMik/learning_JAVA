@@ -11,19 +11,22 @@ import java.awt.event.WindowEvent;
 public class Panelhome extends javax.swing.JFrame {
         
     // Declaração de variáveis
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanelFilho;
-    private javax.swing.JPanel jPanelObservacao;
-    private javax.swing.JPanel jPanelAdmin;
-    private javax.swing.JPanel jPanelMother;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPaneContainer;
-    private javax.swing.JTextArea jTextAreaObservacao;
-    private javax.swing.JTextField jTextFieldCargo;
-    private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTipoSanguineo;
+    private JLabel jLabel1;
+    private JLabel jLabel3;
+    private JLabel jLabel4;
+    private JButton btnIn;
+    private JButton btnRe;
+    private JButton btnE;
+    private JPanel jPanelFilho;
+    private JPanel jPanelObservacao;
+    private JPanel jPanelAdmin;
+    private JPanel jPanelMother;
+    private JScrollPane jScrollPane1;
+    private JTabbedPane jTabbedPaneContainer;
+    private JTextArea jTextAreaObservacao;
+    private JTextField jTextFieldCargo;
+    private JTextField jTextFieldNome;
+    private JTextField jTextFieldTipoSanguineo;
     // Fim da declaração de variáveis
   
     public Panelhome() {
@@ -41,7 +44,7 @@ public class Panelhome extends javax.swing.JFrame {
         jTabbedPaneContainer.add("Mãe", jPanelMother);
         jTabbedPaneContainer.add("Admin", jPanelAdmin);
             
-      
+        btnIn = new JButton("Inserir");
         jLabel3 = new JLabel();
         jTextFieldCargo = new JTextField();
         jLabel4 = new JLabel();
@@ -54,34 +57,34 @@ public class Panelhome extends javax.swing.JFrame {
         jLabel1.setText("Nome");
         jLabel4.setText("Tipo Sangu\u00edneo");
         jLabel3.setText("Cargo");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home");
         jTextAreaObservacao.setColumns(20);
         jTextAreaObservacao.setRows(5);
         jScrollPane1.setViewportView(jTextAreaObservacao);
       
-
-        javax.swing.GroupLayout jPanelFilhoLayout = new javax.swing
+        GroupLayout jPanelFilhoLayout = new javax.swing
         .GroupLayout(jPanelFilho);
         jPanelFilho.setLayout(jPanelFilhoLayout);
         jPanelFilhoLayout.setHorizontalGroup(
-            jPanelFilhoLayout.createParallelGroup(javax.swing
-            .GroupLayout.Alignment.LEADING)
+            jPanelFilhoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFilhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelFilhoLayout.createParallelGroup
-                (javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNome, javax.swing.
-                    GroupLayout.PREFERRED_SIZE, 228, javax.swing
-                    .GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                (GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNome)
+                    .addComponent(jTextFieldTipoSanguineo)
+                    .addComponent(jLabel1))            
                 .addContainerGap(137, Short.MAX_VALUE))
+                
         );
 
         jPanelFilhoLayout.setVerticalGroup(
-            jPanelFilhoLayout.createParallelGroup(javax.swing
-            .GroupLayout.Alignment.LEADING)
+            jPanelFilhoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFilhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addComponent(jTextFieldTipoSanguineo)
                 .addPreferredGap(LayoutStyle
                 .ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNome, javax.swing
@@ -90,16 +93,15 @@ public class Panelhome extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
          
-        javax.swing.GroupLayout jPanelMotherLayout = new javax
+        GroupLayout jPanelMotherLayout = new javax
         .swing.GroupLayout(jPanelMother);
         jPanelMother.setLayout(jPanelMotherLayout);
         jPanelMotherLayout.setHorizontalGroup(
-            jPanelMotherLayout.createParallelGroup(javax.swing
-            .GroupLayout.Alignment.LEADING)
+            jPanelMotherLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMotherLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMotherLayout.createParallelGroup
-                (javax.swing.GroupLayout.Alignment.LEADING)
+                (GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldCargo, javax.swing
                     .GroupLayout.PREFERRED_SIZE, 211, javax.swing
                     .GroupLayout.PREFERRED_SIZE)
@@ -125,8 +127,7 @@ public class Panelhome extends javax.swing.JFrame {
         swing.GroupLayout(jPanelAdmin);
         jPanelAdmin.setLayout(jPanelPessoalLayout);
         jPanelPessoalLayout.setHorizontalGroup(
-            jPanelPessoalLayout.createParallelGroup(javax.swing
-            .GroupLayout.Alignment.LEADING)
+            jPanelPessoalLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPessoalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelPessoalLayout.createParallelGroup
@@ -145,36 +146,35 @@ public class Panelhome extends javax.swing.JFrame {
             .addGroup(jPanelPessoalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle
+                .addPreferredGap(LayoutStyle
                 .ComponentPlacement.RELATED)
                 .addComponent(jTextFieldTipoSanguineo, javax.swing
-                .GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout
-                .DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .GroupLayout.PREFERRED_SIZE, GroupLayout
+                .DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        //Configuração do layout da home 
-        javax.swing.GroupLayout layout = new javax.swing.
-        GroupLayout(getContentPane());
+        //Configuração 
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         //Configurar tamanho na horizontal
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout
+            layout.createParallelGroup(GroupLayout
             .Alignment.LEADING)
-            .addComponent(jTabbedPaneContainer, javax.swing.GroupLayout
+            .addComponent(jTabbedPaneContainer, GroupLayout
             .DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         //Configurar tamanho na vertical
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout
+            layout.createParallelGroup(GroupLayout
             .Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPaneContainer, javax.swing
                 .GroupLayout.PREFERRED_SIZE,200, javax.swing
                 .GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle
-                .ComponentPlacement.RELATED, javax.swing.GroupLayout
+                .addPreferredGap(LayoutStyle
+                .ComponentPlacement.RELATED, GroupLayout
                 .DEFAULT_SIZE, Short.MAX_VALUE)
         ));
         pack();

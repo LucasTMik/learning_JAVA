@@ -1,4 +1,4 @@
-package mothersday.users;
+package mothersday.models;
 import mothersday.contracts.IDefaultUser;
 
 public class Son extends User implements IDefaultUser

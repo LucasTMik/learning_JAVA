@@ -1,5 +1,5 @@
 package mothersday.controllers;
-import mothersday.users.*;
+import mothersday.models.*;
 import mothersday.contracts.IDefaultUser;
 import mothersday.lib.SonDatabase;
 

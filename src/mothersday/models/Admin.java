@@ -1,4 +1,4 @@
-package mothersday.users;
+package mothersday.models;
 
 public class Admin extends User
 {

@@ -8,7 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import mothersday.controllers.*;
-import mothersday.users.*;
+import mothersday.models.*;
 
 public class PanelLogin
 {
