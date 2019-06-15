@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import mothersday.controllers.*;
 import mothersday.users.*;
 
-
 public class JPanelExemplo
 {
    private JFrame jFrame;
@@ -62,16 +61,10 @@ public class JPanelExemplo
             @Override
             public void actionPerformed(ActionEvent e) {
                String email = textFieldNome.getText();
-
                int pass = Integer.parseInt(textFieldSenha.getText().trim());
 
                Son currentUser = UserController.login(email,pass);
                System.out.println(currentUser);
-               try {
-                JOptionPane.showInputDialog(currentUser.getName());
-               } catch(Exception error) {
-
-               }
 
           }
         }
