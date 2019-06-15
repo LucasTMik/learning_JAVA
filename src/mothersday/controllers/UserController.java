@@ -1,5 +1,5 @@
 package mothersday.controllers;
-import mothersday.users.*;
+import mothersday.models.*;
 import mothersday.contracts.IDefaultUser;
 import mothersday.lib.SonDatabase;
 
@@ -24,8 +24,6 @@ public class UserController
             } 
         }
 
-        System.out.println(users);
-
         return dbUser.insert(new Son(name, email,password));
         // return new Son(name, email,password);
     }
@@ -43,6 +41,7 @@ public class UserController
             motherAsSon.setAsMother(mother);
             mother.setSon(son);
             son.setMother(mother);
+            dbUser.insert(motherAsSon);
             return motherAsSon;
         } else {
             System.out.println("Ja EXISTE UMA MAE COM ESTE USUARIO");
@@ -50,25 +49,44 @@ public class UserController
         }
     }
 
-    //SET NAME E PASS E SALVA NO BANCO
-    public boolean setName(User currentUser, User user, String name) 
+    //SET NAME, PASS E EMAIL E SALVA NO BANCO
+    public boolean setName(Son currentUser, Son user, String name) 
     {
-        return user.setName(name);
+        ArrayList<Son> userList = dbUser.getByParam("email", user.getEmail());
+        if(userList.size() != 0 && (currentUser.getAsAdmin() != null || userList.get(0) == currentUser || userList.get(0) == currentUser.getMother().getAsSon())) 
+            return userList.get(0).setName(name);
+        
+        return false;
     }
 
-    public boolean setPass(User currentUser, User user, int pass) 
+    public boolean setPass(Son currentUser, Son user, int pass) 
     {
-        return user.setPass(pass);
+        ArrayList<Son> userList = dbUser.getByParam("email", user.getEmail());
+        if(userList.size() != 0 && (currentUser.getAsAdmin() != null || userList.get(0) == currentUser || userList.get(0) == currentUser.getMother().getAsSon())) {
+            return userList.get(0).setPass(pass);
+        }
+        return false;
     }
 
-    public boolean setEmail(User currentUser, User user, String email) 
+    public boolean setEmail(Son currentUser, Son user, String email) 
     {
-        return user.setEmail(email);
+        ArrayList<Son> userList = dbUser.getByParam("email", user.getEmail());
+        if(userList.size() != 0 && (currentUser.getAsAdmin() != null || userList.get(0) == currentUser || userList.get(0) == currentUser.getMother().getAsSon())) {
+            return userList.get(0).setEmail(email);
+        }
+        return false;
     }
-
+    
     
 
-
+    //ADMIN FUFNCRIONS 
+    public boolean removeUser(Son currentUser, Son user) {
+        if(currentUser.getAsAdmin() != null) {
+            return dbUser.removeByParam("email", user.getEmail());          
+        }
+        return false;
+    }
+    
     ////////////////////////////////////////
     //////           LOGIN            //////
     ////////////////////////////////////////
@@ -77,7 +95,7 @@ public class UserController
         List<Son> users = dbUser.getItems();
    
         for(Son user : users) {
-            if(user.getEmail().equals(email) && user.tryPass(1234)) {
+            if(user.getEmail().equals(email) && user.tryPass(pass)) {
                 return user;
             }
         }

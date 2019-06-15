@@ -1,6 +1,6 @@
 package mothersday.lib;
 
-import mothersday.users.*;
+import mothersday.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,40 +8,49 @@ import java.sql.*;
 
 public class SonDatabase {
     
-    List<Son> data = new ArrayList<Son>();
+    ArrayList<Son> data = new ArrayList<Son>();
 
     public Son insert(Son element) {
         data.add(element);
         return element;
     }
 
-    public List<Son> getItems() {
+    public ArrayList<Son> getItems() {
         return data;
     }
 
-    public Son removeItemByParam(String param, String val) {
-        Son element = this.getByParam(param, val).get(0);
-        this.data.remove(element);
-        return element;
+    public boolean removeByParam(String param, String val) {
+        ArrayList<Son> elements = this.getByParam(param, val);
+        if(elements.size() != 0) {
+            this.data.remove(elements.get(0));
+            return true;
+        }
+        return false;
     }
 
-    public List<Son> getByParam(String param, String val) {
+    public ArrayList<Son> getByParam(String param, String val) {
 
-        List<Son> results = new ArrayList<Son>();
+        ArrayList<Son> results = new ArrayList<Son>();
 
         switch(param) {
-            case "name": {
-                for(Son Son : this.data) {
-                    if(Son.getName().equals(val)) 
-                        results.add(Son);
-                }
+            case "name": 
+                for(Son son : this.data) {
+                    if(son.getName().equals(val)) 
+                        results.add(son);
+                break;
             }
             case "email": {
-                for(Son Son : this.data) {
-                    if(Son.getEmail().equals(val))
-                        results.add(Son);
-                }
+                for(Son son : this.data) 
+                    if(son.getEmail().equals(val))
+                        results.add(son);
+                break;
             }
+            case "mother": {
+                for(Son son : this.data)
+                    if(son.getAsMother() != null && (val.equals("") || son.getName().equals(val)))
+                        results.add(son);
+                break;
+            } 
         }
 
         return results;

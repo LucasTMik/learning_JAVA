@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import mothersday.users.*;
+import mothersday.models.*;
 import mothersday.controllers.*;
 import mothersday.contracts.*;
 import mothersday.lib.*;
@@ -22,12 +22,13 @@ public class Main
 
       controller.NewUser("Lucas", "lucascer", 1234);
       controller.NewUser("Mateus", "mateus", 1234);
-      controller.NewUser("Zé", "ze", 1234);
+      Son currentUser = controller.login("lucascer", 1234);
+      System.out.println(currentUser.getName());
 
-      Son test = controller.login("lucascer", 1234);
-      System.out.println(test);
+      controller.setName(currentUser, currentUser, "Lukinha");
 
-
+      Son motherAsSon = controller.setMother(currentUser, "Marcia", "marcunha" , 123);
+      System.out.println(motherAsSon.getAsMother().getSon().getName());
    }
 }
 

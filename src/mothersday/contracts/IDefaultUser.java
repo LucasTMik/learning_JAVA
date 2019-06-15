@@ -1,6 +1,6 @@
 package mothersday.contracts;
 
-import mothersday.users.*;
+import mothersday.models.*;
 
 public interface IDefaultUser 
 {
