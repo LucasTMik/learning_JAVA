@@ -55,9 +55,10 @@ public class Son extends User implements IDefaultUser
     public boolean setMothersEmail(String email)
     {
         try {
-            this.mother.setEmail(email);
+            return this.mother.setEmail(email);
         } catch(Exception err) {
             System.out.println(err);
+            return false;
         }
     }
 
