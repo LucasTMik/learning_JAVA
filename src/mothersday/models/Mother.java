@@ -19,6 +19,10 @@ public class Mother extends User implements IDefaultUser
         return this.son = son;
     }
 
+    public Son getAsSon() {
+        return this.asSon;
+    }
+ 
     public Son getSon() 
     {
         return this.son;

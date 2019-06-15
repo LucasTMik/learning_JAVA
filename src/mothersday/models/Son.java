@@ -4,12 +4,17 @@ import mothersday.contracts.IDefaultUser;
 public class Son extends User implements IDefaultUser
 {
 
-    private Mother mother;
-    private Mother asMother;
+    private Mother mother = null; 
+    private Mother asMother = null;
+    private Admin asAdmin = null;
 
 
     public Son(String name, String email, int pass) {
         super(name, email, pass);         
+    }
+
+    public Admin getAsAdmin() {
+        return this.asAdmin;
     }
 
     public Mother setAsMother(Mother asMother) 
