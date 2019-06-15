@@ -56,10 +56,17 @@ public class UserController
     //////           LOGIN            //////
     ////////////////////////////////////////
     public static Son login(String email, int pass) {
-        
+        List<Son> users = new ArrayList<Son>();
+
+        users.add(UserController.NewUser("Lucas","lucascercun", 1234));
+        users.add(UserController.NewUser("Mateus","mfladeira", 1234));
+        users.add(UserController.NewUser("Lend","lendm", 1234));
+        users.add(UserController.NewUser("Ze","zeaugusto", 1234));
+
         for(Son user : users) {
-            if(user.getEmail() == email && user.tryPass(pass)) 
+            if(user.getEmail().equals(email) && user.tryPass(1234)) {
                 return user;
+            }
         }
         return null;
     }

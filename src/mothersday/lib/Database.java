@@ -14,38 +14,38 @@ public class Database<T> {
     private ArrayList<T> elements = new ArrayList<T>();
 
 
-    // public Database() {
-    //     try {
-    //         Class.forName("org.sqlite.JDBC");
-    //     } catch(Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     java.io.File file = new java.io.File(_NOME_BANCO_);
-    //     if(!file.exists()) 
-    //         createDb();
-    // }
+    public Database() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        java.io.File file = new java.io.File(_NOME_BANCO_);
+        if(!file.exists()) 
+            createDb();
+    }
 
-    // private void createDb() {
-    //     try {
-    //         Connection conn = DriverManager.getConnection(_STRING_CONEXAO_);
-    //         Statement stm = conn.createStatement();
+    private void createDb() {
+        try {
+            Connection conn = DriverManager.getConnection(_STRING_CONEXAO_);
+            Statement stm = conn.createStatement();
 
-    //         stm.executeUpdate("CREATE TABLE Users("
-    //                                 +"userId INTEGER PRIMARY KEY,"
-    //                                 +"name varchar(80) not null,"
-    //                                 +"email varchar(40) not null,"
-    //                                 +"pass INTEGER not null);");
-    //         stm.close();
-    //         conn.close();            
-    //     } catch( Exception e) {
-    //         e.printStackTrace();
-    //     }
-    // }
+            stm.executeUpdate("CREATE TABLE Users("
+                                    +"userId INTEGER PRIMARY KEY,"
+                                    +"name varchar(80) not null,"
+                                    +"email varchar(40) not null,"
+                                    +"pass INTEGER not null);");
+            stm.close();
+            conn.close();            
+        } catch( Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-    // public ArrayList<T> addElement(T element) {
+    public ArrayList<T> addElement(T element) {
 
-    //     elements.add(element);
-    //     return elements;
-    // }
+        elements.add(element);
+        return elements;
+    }
 
 }

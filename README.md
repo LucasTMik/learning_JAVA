@@ -8,7 +8,7 @@ Nome | RGU
 -----|-----
 Lucas Cerqueira Cunha | 11610758
 Mateus Ferreira | ----
-Leandro Mello | ----
+Leandro Mellooo | ----
 
 ### Compilando o programa
   De dentro da pasta do projeto execute o comando abaixo para compilar o código:
