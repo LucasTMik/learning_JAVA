@@ -16,18 +16,11 @@ public class Main
 {  
    public static void main(final String[] arguments)
    {
-      // Son currentUser = UserController.login("lucascerun", 1234);
-      // System.out.println(currentUser);
-      UserController controller = new UserController();
-
-      controller.NewUser("Lucas", "lucascer", 1234);
-      controller.NewUser("Mateus", "mateus", 1234);
-      controller.NewUser("Zé", "ze", 1234);
-
-      Son test = controller.login("lucascer", 1234);
-      System.out.println(test);
-
-
+      java.awt.EventQueue.invokeLater(new Runnable() {
+         public void run() {
+             new Panelhome().setVisible(true);
+         }
+     });
    }
 }
 

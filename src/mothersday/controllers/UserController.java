@@ -53,6 +53,7 @@ public class UserController
     //SET NAME E PASS E SALVA NO BANCO
     public boolean setName(User currentUser, User user, String name) 
     {
+        
         return user.setName(name);
     }
 
@@ -75,9 +76,9 @@ public class UserController
     public Son login(String email, int pass) {
 
         List<Son> users = dbUser.getItems();
-   
+        
         for(Son user : users) {
-            if(user.getEmail().equals(email) && user.tryPass(1234)) {
+            if(user.getEmail().equals(email) && user.tryPass(pass)) {
                 return user;
             }
         }
@@ -85,3 +86,4 @@ public class UserController
     }
 
 }
+    

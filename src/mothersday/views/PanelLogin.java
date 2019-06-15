@@ -4,12 +4,13 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import mothersday.controllers.*;
-import mothersday.users.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class JPanelExemplo
+import mothersday.controllers.*;
+import mothersday.users.*;
+
+public class PanelLogin
 {
    private JFrame jFrame;
    private JPanel panel1;
@@ -28,9 +29,11 @@ public class JPanelExemplo
    private JButton btn4; //Botão criar conta
    private JTextField textFieldNome2;
    private JTextField textFieldEmail2;
-   private JTextField textFieldSenha2;
-  
-   public JPanelExemplo() {
+	 private JTextField textFieldSenha2;
+
+	 UserController userController = new UserController();
+
+   public PanelLogin() {
         iniciarComponentes();
     }
 
@@ -80,9 +83,9 @@ public class JPanelExemplo
                String email = textFieldNome.getText();
                int pass = Integer.parseInt(textFieldSenha.getText().trim());
 
-               Son currentUser = UserController.login(email,pass);
+               Son currentUser = userController.login(email,pass);
                System.out.println(currentUser);
-
+              
             }
           }
         );
@@ -101,7 +104,7 @@ public class JPanelExemplo
             public void actionPerformed(ActionEvent e) {
 
                 jFrame2 = new JFrame("Tela Criar Conta");
-                jFrame2.setLayout(new GridLayout(1,1));
+                jFrame2.setLayout(new GridLayout(0,1));
 
                 panelc1 = new JPanel();
                 panelc1.setLayout(new GridLayout(0,1));
@@ -146,9 +149,9 @@ public class JPanelExemplo
                         String nome2 = textFieldNome2.getText();
                         String email2 = textFieldEmail2.getText();
                         int pass2 = Integer.parseInt(textFieldSenha2.getText().trim());
-                        Son test = UserController.NewUser(nome2,email2,pass2); 
-                        System.out.println(test);
-
+                        Son test = userController.NewUser(nome2,email2,pass2); 
+												System.out.println(test);
+												//jFrame2.setVisible(false);
                     }
                   }
                 );  
