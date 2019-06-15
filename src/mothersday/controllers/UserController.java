@@ -77,8 +77,9 @@ public class UserController
         List<Son> users = dbUser.getItems();
    
         for(Son user : users) {
-            if(user.getEmail() == email && user.tryPass(pass)) 
+            if(user.getEmail().equals(email) && user.tryPass(1234)) {
                 return user;
+            }
         }
         return null;
     }
