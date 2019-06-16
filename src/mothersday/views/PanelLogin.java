@@ -32,10 +32,13 @@ public class PanelLogin
    private JTextField textFieldEmail2;
 	 private JTextField textFieldSenha2;
 
-	 UserController userController = new UserController();
+	 UserController userController;
+   MediaController mediaController;
 
-   public PanelLogin() {
-        iniciarComponentes();
+   public PanelLogin(UserController userController, MediaController mediaController) {
+      this.userController = userController;
+      this.mediaController = mediaController;
+      iniciarComponentes();
     }
 
 
@@ -87,9 +90,9 @@ public class PanelLogin
                 Son currentUser = userController.login(email,pass);
                 System.out.println(currentUser);
                 if(currentUser != null)
-                  new PanelHome(currentUser);
+                  new PanelHome(userController, mediaController , currentUser);
                 else 
-                  JOptionPane.showMessageDialog(null, "Nao exite");
+                  JOptionPane.showMessageDialog(null, "Nao existe");
               
             }
           }

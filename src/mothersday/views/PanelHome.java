@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import mothersday.controllers.*;
 import mothersday.models.*;
 
@@ -36,7 +37,14 @@ public class PanelHome {
     private JTextField textFieldMidia; // text box filtro midia 
     private JComboBox box;
 
-    public PanelHome() {
+    private UserController userController;
+    private MediaController mediacontroller;
+    private Son currentUser; 
+
+    public PanelHome(UserController userController, MediaController mediacontroller, Son currentUser) {
+        this.userController = userController;
+        this.mediacontroller = mediacontroller;
+        this.currentUser = currentUser;
         iniciarComponentes();
     }
 
@@ -179,7 +187,7 @@ public class PanelHome {
         btnE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                             
+              
             }
           }
         );
@@ -285,6 +293,7 @@ public class PanelHome {
                 btnSonCancel.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        System.out.println(userController.getUsers().get(0).getName());
                         frameESon.setVisible(false);           
                     }
                   } 
@@ -292,7 +301,33 @@ public class PanelHome {
                 btnSonOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                                     
+                      System.out.println(textFieldSonEname.getText());
+                      System.out.println(userController.getUsers());
+                      String newName = textFieldSonEname.getText();
+                      
+                      String newPassStr = textFieldSonEsenha.getText();
+                      String confirmPassStr = textFieldSonEconfirmasenha.getText();
+                      int newPass = 0;
+                      int confirmPass = 0;
+                      try {
+                        newPass = Integer.parseInt(newPassStr);
+                        confirmPass = Integer.parseInt(confirmPassStr);
+                      } finally {
+                        if(!newName.isEmpty()) {
+                          try {
+                            userController.setName(currentUser, currentUser, newName);
+                          } catch(Exception E) {
+                            E.printStackTrace();
+                          }
+                        } 
+                        if(!newPassStr.isEmpty() && newPass == confirmPass) {
+                          try {
+                            userController.setPass(currentUser, currentUser, newPass);
+                          } catch(Exception E) {
+                            E.printStackTrace();
+                          }
+                        }
+                      }
                     }
                   }
                 );              
