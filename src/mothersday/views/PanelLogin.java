@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 
 import mothersday.controllers.*;
 import mothersday.models.*;
+import mothersday.views.*;
 
 public class PanelLogin
 {
@@ -16,9 +17,9 @@ public class PanelLogin
    private JPanel panel1;
    private JPanel panel2;
    private JPanel panelBtns;
-   private JButton btn1;
-   private JButton btn2;
-   private JButton btn3;
+   private JButton btn1; //logar  
+   private JButton btn2; //sair do programa
+   private JButton btn3; //botao entrar no frame de criar conta
    private JTextField textFieldNome;
    private JTextField textFieldSenha;
    private JFrame jFrame2;
@@ -26,7 +27,7 @@ public class PanelLogin
    private JPanel panelc2;
    private JPanel panelc3;
    private JPanel panelc4; 
-   private JButton btn4; //Botão criar conta
+   private JButton btn4; //Botão cria a conta 
    private JTextField textFieldNome2;
    private JTextField textFieldEmail2;
 	 private JTextField textFieldSenha2;
@@ -80,11 +81,15 @@ public class PanelLogin
         btn1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               String email = textFieldNome.getText();
-               int pass = Integer.parseInt(textFieldSenha.getText().trim());
-
-               Son currentUser = userController.login(email,pass);
-               System.out.println(currentUser);
+              
+                String email = textFieldNome.getText();
+                int pass = Integer.parseInt(textFieldSenha.getText().trim());
+                Son currentUser = userController.login(email,pass);
+                System.out.println(currentUser);
+                if(currentUser != null)
+                  new PanelHome(currentUser);
+                else 
+                  JOptionPane.showMessageDialog(null, "Nao exite");
               
             }
           }
