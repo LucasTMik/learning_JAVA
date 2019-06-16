@@ -11,5 +11,4 @@ public class Admin
     public Son getAsSon() {
         return this.asSon;
     }
-
 }
