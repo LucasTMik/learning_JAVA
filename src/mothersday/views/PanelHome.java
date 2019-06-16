@@ -70,7 +70,13 @@ public class PanelHome {
         tp.add("Filho",p1); 
         tp.add("Mãe",p2);  
         tp.add("Administrador",p3);
-        
+               //tabela
+               String data[][]={{"20.05/2019"},{"audio"},{"audioNovo"},{"8"},{"sim"}};
+               String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
+               JTable jt= new JTable(data,column);
+        String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
+        frameAgen.add(sp);  
+               //
         f.add(tp);  
         f.setLocationRelativeTo(null);
         f.setSize(1350,400);  
@@ -81,6 +87,16 @@ public class PanelHome {
         btnIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                 frameAgen= new JFrame("Inserir Agendamento");
+                 frameAgen.setLayout(new GridLayout(0,1));
+                 
+                 JPanel pIna=new JPanel(); //painel inserir nome agendamento
+                 JPanel pDa=new JPanel(); //painel data agendamento
+                 JPanel pBa=new JPanel(); //painel botões agendamento
+                 JPanel pbMa= new JPanel(); //painel midia agendamento
+                 JButton btnIa= new JButton(); //botao Ok do inserir agendamento
+                 JButton btnCa= new JButton(); //botao cancelar do agendamento
+                 JButton btnFa = new JButton(); //botao filtrar agendamento
                                
             }
           }
