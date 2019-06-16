@@ -87,7 +87,25 @@ public class UserController
         }
         return false;
     }
-    
+
+
+    public ArrayList<Son> getUsers() {
+        return dbUser.getItems();
+    }
+
+    public ArrayList<Son> getUsersByParam(String param, String val) {
+        return dbUser.getByParam(param, val);
+    }
+
+    public boolean removeUser(Son user) {
+        try {
+            dbUser.removeItem(user);
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }    
     
 
     //ADMIN FUFNCRIONS 

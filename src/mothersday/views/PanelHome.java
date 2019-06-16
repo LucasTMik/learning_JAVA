@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import mothersday.controllers.*;
 import mothersday.models.*;
 
@@ -35,7 +36,14 @@ public class PanelHome {
     private JTextField textFieldMidia; // text box filtro midia 
     private JComboBox box;
 
-    public PanelHome() {
+    private UserController userController;
+    private MediaController mediacontroller;
+    private Son currentUser; 
+
+    public PanelHome(UserController userController, MediaController mediacontroller, Son currentUser) {
+        this.userController = userController;
+        this.mediacontroller = mediacontroller;
+        this.currentUser = currentUser;
         iniciarComponentes();
     }
 
@@ -53,7 +61,7 @@ public class PanelHome {
         box.addItem("tudo bem?");
         textFieldSearch = new JTextField(18);
         textFieldMonName = new JTextField(7);
-        JTextArea ta=new JTextArea(200,200);  
+        // JTextArea ta=new JTextArea(200,200);  
         JPanel p1=new JPanel();
 
         JPanel panelTable = new JPanel();
@@ -72,7 +80,7 @@ public class PanelHome {
         p1.add(btnEF);
         JPanel p2=new JPanel();  
         JPanel p3=new JPanel();    
-        p1.add(ta);  
+        // p1.add(ta);  
         //tabela
         String data[][]={{"20.05/2019","audio","audioNovo","8","sim"}};
         String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
@@ -86,7 +94,6 @@ public class PanelHome {
 
         JTabbedPane abas=new JTabbedPane();  
         
-        abas.setSize(1350,400);  
         abas.add("Filho",containerPanel); //Tabela Pane
         abas.add("Mãe",p2);  
         abas.add("Administrador",p3);
@@ -94,7 +101,7 @@ public class PanelHome {
         // f.add(panelTable);  
         //
         f.setLocationRelativeTo(null);
-        f.setSize(1350,400);  
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setVisible(true);
 
         //Eventos botão 
@@ -159,7 +166,7 @@ public class PanelHome {
         btnE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                             
+              
             }
           }
         );
@@ -265,6 +272,7 @@ public class PanelHome {
                 btnSonCancel.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        System.out.println(userController.getUsers().get(0).getName());
                         frameESon.setVisible(false);           
                     }
                   } 
@@ -272,7 +280,33 @@ public class PanelHome {
                 btnSonOk.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                                     
+                      System.out.println(textFieldSonEname.getText());
+                      System.out.println(userController.getUsers());
+                      String newName = textFieldSonEname.getText();
+                      
+                      String newPassStr = textFieldSonEsenha.getText();
+                      String confirmPassStr = textFieldSonEconfirmasenha.getText();
+                      int newPass = 0;
+                      int confirmPass = 0;
+                      try {
+                        newPass = Integer.parseInt(newPassStr);
+                        confirmPass = Integer.parseInt(confirmPassStr);
+                      } finally {
+                        if(!newName.isEmpty()) {
+                          try {
+                            userController.setName(currentUser, currentUser, newName);
+                          } catch(Exception E) {
+                            E.printStackTrace();
+                          }
+                        } 
+                        if(!newPassStr.isEmpty() && newPass == confirmPass) {
+                          try {
+                            userController.setPass(currentUser, currentUser, newPass);
+                          } catch(Exception E) {
+                            E.printStackTrace();
+                          }
+                        }
+                      }
                     }
                   }
                 );              
