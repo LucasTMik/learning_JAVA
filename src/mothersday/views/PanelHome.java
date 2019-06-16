@@ -13,8 +13,7 @@ import mothersday.models.*;
 public class PanelHome {  
     private JFrame f;
     private JFrame frameEMon; // Frame editar mãe
-    private JFrame frameESon; // Frame editar Filho  
-
+    private JFrame frameESon; // Frame editar Filho 
     private JButton btnIn; //Inserir
     private JButton btnRe; //Remover
     private JButton btnE;  //Editar
@@ -78,7 +77,7 @@ public class PanelHome {
         f.setVisible(true);
 
         //Eventos botão 
-        //evento botao inserir
+        //evento botao inserir agendanmento
         btnIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +85,7 @@ public class PanelHome {
             }
           }
         );
-        //evento botao Remover  
+        //evento botao Remover agendanmento
         btnRe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,7 +94,7 @@ public class PanelHome {
           }
         );
 
-        //evento botao Editar 
+        //evento botao Editar agendanmento
         btnE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,7 +103,7 @@ public class PanelHome {
           }
         );
 
-        //evento botao Filtrar  
+        //evento botao Filtrar  agendanmento
         btnF.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
