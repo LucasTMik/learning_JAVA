@@ -8,7 +8,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -16,12 +15,10 @@ import javax.sound.sampled.*;
 
 
 
-=======
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
->>>>>>> b27a9a231fcb141f7a61a9acd7d4d7e4df6f0995
 import mothersday.models.*;
 import mothersday.controllers.*;
 import mothersday.contracts.*;
@@ -50,7 +47,6 @@ public class Main
 
    public static void main(final String[] arguments)
    {
-<<<<<<< HEAD
       // Son currentUser = UserController.login("lucascerun", 1234);
       // System.out.println(currentUser);
       UserController controller = new UserController();
@@ -86,11 +82,9 @@ public class Main
 
       // playSound("music.wav"); 
       // while(true) {}
-=======
       //função abrirlink();
       //new PanelLogin();   
       
->>>>>>> b27a9a231fcb141f7a61a9acd7d4d7e4df6f0995
    }
 
 
