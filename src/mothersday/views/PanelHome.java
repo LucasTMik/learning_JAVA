@@ -11,18 +11,28 @@ import mothersday.controllers.*;
 import mothersday.models.*;
 
 public class PanelHome {  
-    private JFrame f;  
+    private JFrame f;
+    private JFrame frameEMon; // Frame editar mãe
+    private JFrame frameESon; // Frame editar Filho  
+
     private JButton btnIn; //Inserir
     private JButton btnRe; //Remover
     private JButton btnE;  //Editar
     private JButton btnF;  //Filtrar
     private JButton btnEM;  //Editar mae
     private JButton btnEF;  //Editar filho
-    private JTextField textFieldSearch;
+
+    private JTextField textFieldSearch; //Filtro 
     private JTextField textFieldMonName;
+    private JTextField textFieldMonEname; // text box editar nome da mae
+    private JTextField textFieldMonEsenha;  // text box editar senha da mae
+
+    private JTextField textFieldSonEname; // text box editar nome do filho
+    private JTextField textFieldSonEsenha;  // text box editar senha do filho
+    private JTextField textFieldSonEconfirmasenha;  // text box editar confirmar senha do filho
     private JComboBox box;
 
-    public PanelHome() {
+    public PanelHome(Son s) {
         iniciarComponentes();
     }
 
@@ -65,6 +75,149 @@ public class PanelHome {
         f.add(tp);  
         f.setLocationRelativeTo(null);
         f.setSize(1350,400);  
-        f.setVisible(true);  
+        f.setVisible(true);
+
+        //Eventos botão 
+        //evento botao inserir
+        btnIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                               
+            }
+          }
+        );
+        //evento botao Remover  
+        btnRe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                             
+            }
+          }
+        );
+
+        //evento botao Editar 
+        btnE.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                             
+            }
+          }
+        );
+
+        //evento botao Filtrar  
+        btnF.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                             
+            }
+          }
+        );
+
+        //evento botao Editar Mãe  
+        btnEM.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameEMon = new JFrame("Editar Mãe");
+                frameEMon.setLayout(new GridLayout(0,1));
+
+                JPanel pN=new JPanel(); //painel nome
+                JPanel pS=new JPanel(); //painel senha
+                JPanel pB=new JPanel(); //painel botões
+                JButton btnMok= new JButton(); //botao Ok do editar mae
+                JButton btnMcancel= new JButton(); //botao cancelar do editar mae
+
+                textFieldMonEname = new JTextField(7);
+                textFieldMonEsenha = new JTextField(7);
+
+                btnMok = new JButton("Ok");
+                btnMcancel = new JButton("Cancel");
+                pN.add(new JLabel("Nome: "));
+                pN.add(textFieldMonEname);
+                pS.add(new JLabel("Senha: "));
+                pS.add(textFieldMonEsenha);
+                pB.add(btnMok);
+                pB.add(btnMcancel);
+                frameEMon.add(pN);
+                frameEMon.add(pS);
+                frameEMon.add(pB);
+                frameEMon.setSize(250,180);
+                frameEMon.setLocationRelativeTo(null);  
+                frameEMon.setVisible(true);
+                
+                btnMok.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                                     
+                    }
+                  }
+                );
+
+                btnMcancel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        frameEMon.setVisible(false);                    
+                    }
+                  }
+                );
+            }
+          }
+        );
+
+        //evento botao Editar Filho  
+        btnEF.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameESon = new JFrame("Editar Filho");
+                frameESon.setLayout(new GridLayout(0,1));
+
+                JPanel pNf=new JPanel(); //painel nome filho
+                JPanel pSf=new JPanel(); //painel senha filho
+                JPanel pCsf=new JPanel(); //painel confirma senha filho
+                JPanel pBf=new JPanel(); //painel botões filho
+
+                JButton btnSonOk= new JButton(); //botao ok do editar filho
+                JButton btnSonCancel= new JButton(); //botao cancelar do editar filho
+
+                textFieldSonEname = new JTextField(7);
+                textFieldSonEsenha = new JTextField(7);
+                textFieldSonEconfirmasenha = new JTextField(7);
+
+                btnSonOk = new JButton("Ok");
+                btnSonCancel = new JButton("Cancel");
+
+                pNf.add(new JLabel("Nome: "));
+                pNf.add(textFieldSonEname);
+                pSf.add(new JLabel("Senha: "));
+                pSf.add(textFieldSonEsenha);
+                pCsf.add(new JLabel("Confirmar Senha: "));
+                pCsf.add(textFieldSonEconfirmasenha);
+                pBf.add(btnSonOk);
+                pBf.add(btnSonCancel);
+
+                frameESon.add(pNf);
+                frameESon.add(pSf);
+                frameESon.add(pCsf);
+                frameESon.add(pBf);
+                frameESon.setSize(250,180);
+                frameESon.setLocationRelativeTo(null);  
+                frameESon.setVisible(true);
+
+                btnSonCancel.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        frameESon.setVisible(false);           
+                    }
+                  } 
+                );             
+                btnSonOk.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                                     
+                    }
+                  }
+                );              
+            }
+          }
+        );
 }}  
   
