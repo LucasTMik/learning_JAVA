@@ -36,6 +36,7 @@ public abstract class Media {
     public Date getScheduledDate() { return this.scheduledDate.getTime(); }
 
     public abstract void playMedia();
+    public abstract void editMedia(String val);
 
     public boolean setTitle(String newTitle) {this.title = newTitle; return true;}
     public boolean setGrade(Float newGrade) { this.grade = newGrade; return true;}

@@ -25,6 +25,11 @@ public class Audio extends Media {
         this.playSound(this.localPath);
     }
 
+    @Override 
+    public void editMedia(String val) {
+        
+    }
+
     @Override
     public String toString() {
         return this.getTitle();

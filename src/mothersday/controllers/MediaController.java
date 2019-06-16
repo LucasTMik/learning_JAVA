@@ -49,9 +49,33 @@ public class MediaController {
             if(mediaObj != null) 
                 dbMedia.insert(mediaObj);
         } else 
-            System.out.println("Você ainda não cadastrou sua mae");
+            System.out.println("Usuario ainda não cadastrou sua mae");
         return mediaObj;
     }
 
-    
+    //REMOVE AND EDIT
+    public boolean removeMedia(Son currentUser, Media media) {
+        if(this.validateUser(currentUser, media)) {
+            dbMedia.removeItem(media);
+            return true;
+        } else {
+            System.out.println("Usuario nao pode remover esta midia");
+        }
+        return false;
+    }
+
+    public boolean editMediaTitle(Son currentUser, Media media, String val) {
+        if(this.validateUser(currentUser, media)) 
+           return media.setTitle(val);
+        return false;
+    }
+
+    public void editMedia(Son currentUser, Media media, String val) {
+        if(this.validateUser(currentUser, media))
+            media.setTitle(val);
+    }
+
+    private boolean validateUser(Son currentUser, Media media) {
+        return media != null && (currentUser.getAsAdmin() != null || currentUser.getEmail().equals(media.getOwner().getEmail()));
+    }
 }

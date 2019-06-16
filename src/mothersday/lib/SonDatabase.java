@@ -28,6 +28,16 @@ public class SonDatabase {
         return false;
     }
 
+    public boolean removeItem(Son user) {
+        try {
+            this.data.remove(user);
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public ArrayList<Son> getByParam(String param, String val) {
 
         ArrayList<Son> results = new ArrayList<Son>();
