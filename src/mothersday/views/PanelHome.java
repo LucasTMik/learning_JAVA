@@ -1,5 +1,6 @@
 package mothersday.views;
 
+import javax.swing.event.*;  
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -50,15 +51,14 @@ public class PanelHome {
         btnEF = new JButton("Editar-Filho");
         box = new JComboBox();   
         box.addItem("");
-        box.addItem("tudo bem?");
+        box.addItem("Audio");
+        box.addItem("Musica");
+        box.addItem("Video");
+        box.addItem("Frase");
         textFieldSearch = new JTextField(18);
         textFieldMonName = new JTextField(7);
-        JTextArea ta=new JTextArea(200,200);  
         JPanel p1=new JPanel();
-
-        JPanel panelTable = new JPanel();
-        JPanel containerPanel = new JPanel(new GridLayout(0,1));
-        
+        JPanel panelTable = new JPanel(new GridLayout(0,1));
         p1.add(btnIn);
         p1.add(btnRe);
         p1.add(btnE);
@@ -72,29 +72,49 @@ public class PanelHome {
         p1.add(btnEF);
         JPanel p2=new JPanel();  
         JPanel p3=new JPanel();    
-        p1.add(ta);  
+        
         //tabela
-        String data[][]={{"20.05/2019","audio","audioNovo","8","sim"}};
+        String data[][]={{"20.05/2019","audio","audioNovo","8","sim"},{"20.05/2019","oi","audioNovo","8","sim"}};
         String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
-        JTable jt= new JTable(data,column);
-        // jt.setBounds(10,10,150,150);    
+        final JTable jt= new JTable(data,column);
+        jt.setRowSelectionAllowed(true);
+        jt.setColumnSelectionAllowed(false);
+
+        //selecionar linha na tabela
+        JButton select = new JButton("Select");
+        select.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                int index1 = 0;
+                int index2 = 0;
+                try {
+                    index1 = Integer.valueOf(field1.getText());
+                    index2 = Integer.valueOf(field2.getText());
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+
+                if (index1 < 0 || index2 < 0 ||
+                    index1 >= jt.getRowCount() ||
+                    index2 >= jt.getRowCount()) {
+                    JOptionPane.showMessageDialog(jt, "Fora do alcance");
+                } else {
+                    jt.setRowSelectionInterval(index1, index2);
+                }
+            }
+        });
         JScrollPane sp=new JScrollPane(jt);
         panelTable.add(sp);
-
-        containerPanel.add(p1);
-        containerPanel.add(panelTable);
-
+        p1.add(sp);
         JTabbedPane abas=new JTabbedPane();  
-        
-        abas.setSize(1350,400);  
-        abas.add("Filho",containerPanel); //Tabela Pane
+        //
+        abas.add("Filho",p1); //Tabela Pane
         abas.add("Mãe",p2);  
         abas.add("Administrador",p3);
         f.add(abas);  
         // f.add(panelTable);  
         //
         f.setLocationRelativeTo(null);
-        f.setSize(1350,400);  
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);  
         f.setVisible(true);
 
         //Eventos botão 
