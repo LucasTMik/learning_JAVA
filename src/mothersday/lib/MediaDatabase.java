@@ -19,11 +19,12 @@ public class MediaDatabase {
         return data;
     }
 
-    public boolean removeByParam(String param, String val) {
-        ArrayList<Media> elements = this.getByParam(param, val);
-        if(elements.size() != 0) {
-            this.data.remove(elements.get(0));
+    public boolean removeItem(Media element) {
+        try{
+            this.data.remove(element);
             return true;
+        } catch(Exception e) {
+            e.printStackTrace();
         }
         return false;
     }

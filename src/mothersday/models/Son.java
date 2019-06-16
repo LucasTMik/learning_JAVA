@@ -8,9 +8,18 @@ public class Son extends User implements IDefaultUser
     private Mother asMother = null;
     private Admin asAdmin = null;
 
-
     public Son(String name, String email, int pass) {
         super(name, email, pass);         
+    }
+
+    public boolean setAsAdmin(Admin adm) {
+        try {
+            this.asAdmin = adm;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     public Admin getAsAdmin() {

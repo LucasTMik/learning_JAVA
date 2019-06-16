@@ -2,10 +2,8 @@ package mothersday;
 
 import javax.swing.*;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -28,22 +26,7 @@ import mothersday.views.*;
 
 public class Main
 { 
-   public static void abrirlink() {
-        try {
-          URI uri = new URI("https://www.youtube.com/watch?v=C3kJRvq3toA");
-          Desktop desktop = null;
-          if (Desktop.isDesktopSupported()) {
-            desktop = Desktop.getDesktop();
-          }
-    
-          if (desktop != null)
-            desktop.browse(uri);
-        } catch (IOException ioe) {
-          ioe.printStackTrace();
-        } catch (URISyntaxException use) {
-          use.printStackTrace();
-        }
-    };
+  
 
    public static void main(final String[] arguments)
    {
@@ -54,7 +37,7 @@ public class Main
       MediaDatabase dbMedia = new MediaDatabase();
 
       controller.NewUser("Lucas", "lucascer", 1234);
-      // controller.NewUser("Mateus", "mateus", 1234);
+      Son test = controller.NewUser("Mateus", "mateus", 1234);
       Son currentUser = controller.login("lucascer", 1234);
       // System.out.println(currentUser.getName());
 
@@ -76,18 +59,19 @@ public class Main
       mediaController.scheduleMedia(currentUser, MediaTypes.VIDEO, "MothersDayVideo", link, cal );
       mediaController.scheduleMedia(currentUser, MediaTypes.AUDIO, "MothersDayAudio", "music.wav", cal );
 
+      Media teste = mediaController.getMediaByParam("type","VIDEO").get(0);
+
+      // mediaController.removeMedia(test, teste);
+      mediaController.editMediaTitle(test, teste, "HElllllo");
+
       System.out.println(mediaController.getMedias());
 
-      ((Audio)mediaController.getMediaByParam("type", "").get(0)).playMedia();
+      // ((Audio)mediaController.getMediaByParam("type", "audio").get(0)).playMedia();
+      // ((Video)mediaController.getMediaByParam("type", "video").get(0)).playMedia();
 
       // playSound("music.wav"); 
       // while(true) {}
-      //função abrirlink();
-      //new PanelLogin();   
-      
    }
-
-
 }
 
 

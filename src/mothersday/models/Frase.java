@@ -2,6 +2,7 @@ package mothersday.models;
 
 import java.util.Date;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 import mothersday.contracts.*;
 
@@ -17,9 +18,15 @@ public class Frase extends Media {
         return this.frase;
     }
 
+    @Override 
+    public void editMedia(String newVal) {
+        this.frase = newVal;
+    }
+
     @Override
     public void playMedia() {
         //Abre Pane com mensagem
+        JOptionPane.showMessageDialog(null, this.frase);
     }
 
     @Override

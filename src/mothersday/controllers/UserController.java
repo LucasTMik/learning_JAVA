@@ -11,6 +11,18 @@ public class UserController
 
     SonDatabase dbUser = new SonDatabase();
 
+    public Son setAsAdmin(Son currentUser, Son user) {
+        if(currentUser.getAsAdmin() != null)
+            user.setAsAdmin(new Admin());
+        return user;
+    }
+
+    public Son toggleBlock(Son currentUser, Son user) {
+        if(currentUser.getAsAdmin() != null)
+            user.toggleBlock(!user.isBlocked());
+        return user;
+    }
+
     //CRIA NOVO USUARIO SON
     public Son NewUser(String name, String email, int password) 
     {
@@ -35,7 +47,6 @@ public class UserController
         //CRIA SON SETA MAE
         //SAVE NO BANCO E RETORNA MAE
         if(son.getMother() == null) {
-            System.out.println("Nao tem mae cadastrada");
             Son motherAsSon = this.NewUser(name, email, password);
             Mother mother = new Mother(name, email, password, motherAsSon);
             motherAsSon.setAsMother(mother);
@@ -82,7 +93,7 @@ public class UserController
     //ADMIN FUFNCRIONS 
     public boolean removeUser(Son currentUser, Son user) {
         if(currentUser.getAsAdmin() != null) {
-            return dbUser.removeByParam("email", user.getEmail());          
+            return dbUser.removeItem(user);          
         }
         return false;
     }

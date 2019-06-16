@@ -6,12 +6,22 @@ public class User
    private String name;
    private String email;
    private int password;
+   private boolean isBlocked = false;
 
    public User(String name, String email, int password)  
    {
       this.name = name;
       this.password = password;
       this.email = email;
+      
+   }
+
+   public boolean toggleBlock(boolean val) {
+      return this.isBlocked = val;
+   }
+
+   public boolean isBlocked() {
+      return this.isBlocked;
    }
 
    public boolean setPass(int newPass) 
