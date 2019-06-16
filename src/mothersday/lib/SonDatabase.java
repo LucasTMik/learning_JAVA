@@ -35,7 +35,7 @@ public class SonDatabase {
         switch(param) {
             case "name": 
                 for(Son son : this.data) {
-                    if(son.getName().equals(val)) 
+                    if(son.getName().contains(val)) 
                         results.add(son);
                 break;
             }
@@ -47,7 +47,7 @@ public class SonDatabase {
             }
             case "mother": {
                 for(Son son : this.data)
-                    if(son.getAsMother() != null && (val.equals("") || son.getName().equals(val)))
+                    if(son.getAsMother() != null && (val.contains("") || son.getName().contains(val)))
                         results.add(son);
                 break;
             } 

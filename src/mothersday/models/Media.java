@@ -1,23 +1,30 @@
 package mothersday.models;
+
 import java.io.*;
 import javax.imageio.*;
-
 import java.util.Date;
+import java.util.Calendar;
 
-public class Media {
-    private Date date;
+import mothersday.contracts.*;
+
+public abstract class Media {
+    private Calendar createdDate;
+    private Calendar scheduledDate;
     private MediaTypes type;
     private String title;
     private Float grade;
     private boolean vizualized;
     private Son owner;
 
-    public Media(String titulo, MediaTypes type, Son user) {
-        this.date = new Date();
-        this.titulo = titulo;
+    public Media(String titulo, Calendar scheduledDate, MediaTypes type, Son user) {
+        Calendar cal = Calendar.getInstance();
+
+        this.createdDate = cal;
+        this.scheduledDate = scheduledDate;
+        this.title = titulo;
         this.type = type;
         this.grade = null;
-        this.vizualizado = false;    
+        this.vizualized = false;    
         this.owner = user;
     }
 
@@ -26,4 +33,11 @@ public class Media {
     public Float getGrade() { return this.grade; }
     public boolean getIsVizualized() { return this.vizualized; }
     public MediaTypes getType() { return this.type; }
+    public Date getScheduledDate() { return this.scheduledDate.getTime(); }
+
+    public abstract void playMedia();
+
+    public boolean setTitle(String newTitle) {this.title = newTitle; return true;}
+    public boolean setGrade(Float newGrade) { this.grade = newGrade; return true;}
+    public boolean view() {return this.vizualized = true; } 
 }

@@ -36,7 +36,7 @@ public class MediaDatabase {
             switch(param) {
                 case "title": {
                     for(Media media : this.data) 
-                        if(media.getTitle().equals(val)) 
+                        if(media.getTitle().contains(val)) 
                             results.add(media);
                     break;
                 }
@@ -78,22 +78,28 @@ public class MediaDatabase {
                 }
                 case "vizualized": {
                     for(Media media: this.data)
-                        if(media.getIsVizualized())
+                        if(media.getIsVizualized() && media.getTitle().contains(val))
                             results.add(media);
                     break;
                 }
                 case "notVizualized": {
                     for(Media media: this.data)
-                        if(!media.getIsVizualized())
+                        if(!media.getIsVizualized() && media.getTitle().contains(val))
                             results.add(media);
                     break;
                 }
+                case "type": {
+                    for(Media media: this.data) 
+                        if(media.getType().toString().contains(val.toUpperCase()))
+                            results.add(media);
+                    break;
+               }
                 default: {
                     System.out.println("Parametro de busca incorreto");
                 }
-            } catch(Exception E) {
-                E.printStackTrace();
             }
+        } catch(Exception E) {
+            E.printStackTrace();
         }
 
         return results;
