@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import mothersday.controllers.*;
 import mothersday.models.*;
 
@@ -14,6 +13,8 @@ public class PanelHome {
     private JFrame f;
     private JFrame frameEMon; // Frame editar mãe
     private JFrame frameESon; // Frame editar Filho 
+    private JFrame frameAgen; // Frame Agendamento
+
     private JButton btnIn; //Inserir
     private JButton btnRe; //Remover
     private JButton btnE;  //Editar
@@ -29,9 +30,12 @@ public class PanelHome {
     private JTextField textFieldSonEname; // text box editar nome do filho
     private JTextField textFieldSonEsenha;  // text box editar senha do filho
     private JTextField textFieldSonEconfirmasenha;  // text box editar confirmar senha do filho
+
+    private JTextField textFieldtitle; // text box texto titulo agendamente 
+    private JTextField textFieldMidia; // text box filtro midia 
     private JComboBox box;
 
-    public PanelHome(Son s) {
+    public PanelHome() {
         iniciarComponentes();
     }
 
@@ -51,6 +55,10 @@ public class PanelHome {
         textFieldMonName = new JTextField(7);
         JTextArea ta=new JTextArea(200,200);  
         JPanel p1=new JPanel();
+
+        JPanel panelTable = new JPanel();
+        JPanel containerPanel = new JPanel(new GridLayout(0,1));
+        
         p1.add(btnIn);
         p1.add(btnRe);
         p1.add(btnE);
@@ -65,19 +73,26 @@ public class PanelHome {
         JPanel p2=new JPanel();  
         JPanel p3=new JPanel();    
         p1.add(ta);  
-        JTabbedPane tp=new JTabbedPane();  
-        tp.setSize(1350,400);  
-        tp.add("Filho",p1); 
-        tp.add("Mãe",p2);  
-        tp.add("Administrador",p3);
-               //tabela
-               String data[][]={{"20.05/2019"},{"audio"},{"audioNovo"},{"8"},{"sim"}};
-               String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
-               JTable jt= new JTable(data,column);
+        //tabela
+        String data[][]={{"20.05/2019","audio","audioNovo","8","sim"}};
         String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
-        frameAgen.add(sp);  
-               //
-        f.add(tp);  
+        JTable jt= new JTable(data,column);
+        // jt.setBounds(10,10,150,150);    
+        JScrollPane sp=new JScrollPane(jt);
+        panelTable.add(sp);
+
+        containerPanel.add(p1);
+        containerPanel.add(panelTable);
+
+        JTabbedPane abas=new JTabbedPane();  
+        
+        abas.setSize(1350,400);  
+        abas.add("Filho",containerPanel); //Tabela Pane
+        abas.add("Mãe",p2);  
+        abas.add("Administrador",p3);
+        f.add(abas);  
+        // f.add(panelTable);  
+        //
         f.setLocationRelativeTo(null);
         f.setSize(1350,400);  
         f.setVisible(true);
@@ -90,14 +105,44 @@ public class PanelHome {
                  frameAgen= new JFrame("Inserir Agendamento");
                  frameAgen.setLayout(new GridLayout(0,1));
                  
-                 JPanel pIna=new JPanel(); //painel inserir nome agendamento
+                 JPanel pIta=new JPanel(); //painel inserir titulo agendamento
+                 //data picker
                  JPanel pDa=new JPanel(); //painel data agendamento
+                // JDatePicker picker = new JDatePicker();
+                //  picker.setTextEditable(true);
+                //  picker.setShowYearButtons(true);
+                //  pDa.add((JComponent) picker);
+                //  JPanel DatePanel = new JPanel();
+                //  DatePanel.setLayout(new BorderLayout());
+                //  DatePanel.add(pDa, BorderLayout.WEST);
+                //  BorderLayout fb = new BorderLayout();
+                //  frameAgen.setLayout(fb);
+                //  frameAgen.getContentPane().add(DatePanel, BorderLayout.WEST);
+                 //
+                 
                  JPanel pBa=new JPanel(); //painel botões agendamento
-                 JPanel pbMa= new JPanel(); //painel midia agendamento
-                 JButton btnIa= new JButton(); //botao Ok do inserir agendamento
-                 JButton btnCa= new JButton(); //botao cancelar do agendamento
-                 JButton btnFa = new JButton(); //botao filtrar agendamento
-                               
+                 JPanel pMa= new JPanel(); //painel midia agendamento
+                 JButton btnOa= new JButton("Ok"); //botao Ok do inserir agendamento
+                 JButton btnCa= new JButton("Cancelar"); //botao cancelar do agendamento
+                 JButton btnFa = new JButton("Filtrar"); //botao filtrar agendamento
+          
+                 textFieldtitle = new JTextField(7);
+                 textFieldMidia = new JTextField(7);
+                 pIta.add(new JLabel("Titulo: "));
+                 pIta.add(textFieldtitle);
+                 pDa.add(new JLabel("Data: "));
+                 pDa.add(textFieldMidia);
+                 pMa.add(new JLabel("Mídia: "));
+                 pMa.add(btnFa);
+                 pBa.add(btnOa);
+                 pBa.add(btnCa);
+                 frameAgen.add(pIta);
+                 frameAgen.add(pDa);
+                 frameAgen.add(pMa);
+                  
+                 frameAgen.setSize(250,180);
+                 frameAgen.setLocationRelativeTo(null);  
+                 frameAgen.setVisible(true);
             }
           }
         );
