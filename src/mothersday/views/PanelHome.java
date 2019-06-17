@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import mothersday.controllers.*;
 import mothersday.models.*;
@@ -82,9 +83,18 @@ public class PanelHome {
         JPanel p3=new JPanel();    
         
         //tabela
-        String data[][]={{"20.05/2019","audio","audioNovo","8","sim"},{"20.05/2019","oi","audioNovo","8","sim"}};
-        String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
-        final JTable jt= new JTable(data,column);
+        // String data[][]={{"20.05/2019","audio","audioNovo","8","sim"},{"20.05/2019","oi","audioNovo","8","sim"}};
+        //String data[][]={getMediaByParam("userEmail",currentUser.getEmail())};        
+       // String column[]={"Data","Tipo","Título","Nota","Vizualizado"};
+       ArrayList<ArrayList<String>> data= new ArrayList<ArrayList<String>>();
+
+       ArrayList<Media> medias = mediacontroller.getMediaByParam("userEmail",currentUser.getEmail());
+       for (Media userMedia : medias) {
+                
+       }
+       final JTable jt= new JTable(data,column);
+        final JTextField field1 = new JTextField(3);
+        final JTextField field2 = new JTextField(3);
         jt.setRowSelectionAllowed(true);
         jt.setColumnSelectionAllowed(false);
 

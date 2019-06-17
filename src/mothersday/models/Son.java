@@ -80,6 +80,6 @@ public class Son extends User implements IDefaultUser
     @Override
     public String toString() 
     {
-        return "Son";
+        return this.getName();
     }
 }

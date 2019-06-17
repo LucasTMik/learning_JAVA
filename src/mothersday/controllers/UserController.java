@@ -24,7 +24,7 @@ public class UserController
     }
 
     //CRIA NOVO USUARIO SON
-    public Son NewUser(String name, String email, int password) 
+    public Son newUser(String name, String email, int password) 
     {
 
         List<Son> users = dbUser.getItems();                
@@ -47,12 +47,11 @@ public class UserController
         //CRIA SON SETA MAE
         //SAVE NO BANCO E RETORNA MAE
         if(son.getMother() == null) {
-            Son motherAsSon = this.NewUser(name, email, password);
+            Son motherAsSon = this.newUser(name, email, password);
             Mother mother = new Mother(name, email, password, motherAsSon);
             motherAsSon.setAsMother(mother);
             mother.setSon(son);
             son.setMother(mother);
-            dbUser.insert(motherAsSon);
             return motherAsSon;
         } else {
             System.out.println("Ja EXISTE UMA MAE COM ESTE USUARIO");
@@ -97,16 +96,7 @@ public class UserController
         return dbUser.getByParam(param, val);
     }
 
-    public boolean removeUser(Son user) {
-        try {
-            dbUser.removeItem(user);
-            return true;
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }    
-    
+
 
     //ADMIN FUFNCRIONS 
     public boolean removeUser(Son currentUser, Son user) {
