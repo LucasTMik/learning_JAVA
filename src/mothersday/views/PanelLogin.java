@@ -157,7 +157,7 @@ public class PanelLogin
                         String nome2 = textFieldNome2.getText();
                         String email2 = textFieldEmail2.getText();
                         int pass2 = Integer.parseInt(textFieldSenha2.getText().trim());
-                        Son test = userController.NewUser(nome2,email2,pass2); 
+                        Son test = userController.newUser(nome2,email2,pass2); 
 												System.out.println(test);
 												//jFrame2.setVisible(false);
                     }
