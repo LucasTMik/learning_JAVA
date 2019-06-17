@@ -75,6 +75,14 @@ public class MediaController {
             media.setTitle(val);
     }
 
+    public boolean rateMedia(Mother currentMother, Media media, Float value) {
+        if(currentMother != null && currentMother.getSon().getEmail().equals(media.getOwner().getEmail())) {
+            media.setGrade(value);
+            return true;
+        }
+        return false;
+    }
+
     private boolean validateUser(Son currentUser, Media media) {
         return media != null && (currentUser.getAsAdmin() != null || currentUser.getEmail().equals(media.getOwner().getEmail()));
     }

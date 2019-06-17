@@ -48,33 +48,58 @@ public class MediaDatabase {
                     break;
                 }
                 case "nota": {
-                    for(Media media: this.data) 
-                        if(media.getGrade() == Float.parseFloat(val))
-                            results.add(media);
+                    for(Media media: this.data) {
+                        try {
+                            if(media.getGrade() == Float.parseFloat(val))
+                                results.add(media);
+                        } catch(Exception e) {
+                            // e.printStackTrace();
+                        }
+                    } 
                     break;
                 }
                 case "notaGt": {
-                    for(Media media: this.data) 
-                        if(media.getGrade() < Float.parseFloat(val))
-                            results.add(media);
+                    for(Media media: this.data) {
+                        try {
+                            if(media.getGrade() > Float.parseFloat(val))
+                                results.add(media);
+                        } catch(Exception e) {
+                            // e.printStackTrace();
+                        }
+                    }
                     break;
                 }
                 case "notaGtEq": {
-                    for(Media media: this.data)
-                        if(media.getGrade() <= Float.parseFloat(val))
-                            results.add(media);
+                    for(Media media: this.data) {
+                        try {
+                            if(media.getGrade() >= Float.parseFloat(val))
+                                results.add(media);
+                        } catch(Exception e) {
+                            // e.printStackTrace();
+                        }
+                    }
                     break;
                 }
                 case "notaLt": {
-                    for(Media media: this.data) 
-                        if(media.getGrade() > Float.parseFloat(val))
-                            results.add(media);
+                    for(Media media: this.data) {
+                        try {
+                            if(media.getGrade() < Float.parseFloat(val))
+                                results.add(media);
+                        } catch(Exception e) {
+                            // e.printStackTrace();
+                        }
+                    }
                     break;
                 }
                 case "notaLtEq": {
-                    for(Media media: this.data)
-                        if(media.getGrade() >= Float.parseFloat(val))
-                            results.add(media);
+                    for(Media media: this.data) {
+                        try {
+                            if(media.getGrade() <= Float.parseFloat(val))
+                                results.add(media);
+                        } catch(Exception e) {
+                            // e.printStackTrace();
+                        }
+                    }
                     break;
                 }
                 case "vizualized": {
@@ -87,20 +112,18 @@ public class MediaDatabase {
                     for(Media media: this.data)
                         if(!media.getIsVizualized() && media.getTitle().contains(val))
                             results.add(media);
-                    break;
                 }
                 case "type": {
                     for(Media media: this.data) 
                         if(media.getType().toString().contains(val.toUpperCase()))
                             results.add(media);
-                    break;
                }
                 default: {
                     System.out.println("Parametro de busca incorreto");
                 }
             }
         } catch(Exception E) {
-            E.printStackTrace();
+            // E.printStackTrace();
         }
 
         return results;
