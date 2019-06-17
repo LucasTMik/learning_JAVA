@@ -92,22 +92,22 @@ public class PanelHome {
         JButton select = new JButton("Select");
         select.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                int index1 = 0;
-                int index2 = 0;
-                try {
-                    index1 = Integer.valueOf(field1.getText());
-                    index2 = Integer.valueOf(field2.getText());
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
+                // int index1 = 0;
+                // int index2 = 0;
+                // try {
+                //     index1 = Integer.valueOf(field1.getText());
+                //     index2 = Integer.valueOf(field2.getText());
+                // } catch (NumberFormatException e) {
+                //     e.printStackTrace();
+                // }
 
-                if (index1 < 0 || index2 < 0 ||
-                    index1 >= jt.getRowCount() ||
-                    index2 >= jt.getRowCount()) {
-                    JOptionPane.showMessageDialog(jt, "Fora do alcance");
-                } else {
-                    jt.setRowSelectionInterval(index1, index2);
-                }
+                // if (index1 < 0 || index2 < 0 ||
+                //     index1 >= jt.getRowCount() ||
+                //     index2 >= jt.getRowCount()) {
+                //     JOptionPane.showMessageDialog(jt, "Fora do alcance");
+                // } else {
+                //     jt.setRowSelectionInterval(index1, index2);
+                // }
             }
         });
         JScrollPane sp=new JScrollPane(jt);
