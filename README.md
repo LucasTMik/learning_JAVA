@@ -8,7 +8,7 @@ Nome | RGU
 -----|-----
 Lucas Cerqueira Cunha | 11610758
 Mateus Ferreira | ----
-Leandro Mello | ----
+Leandro Mellooo | ----
 
 ### Compilando o programa
   De dentro da pasta do projeto execute o comando abaixo para compilar o código:
@@ -19,3 +19,12 @@ Leandro Mello | ----
   De dentro da pasta do projeto execute o comando abaixo
   
   `java -cp classes mothersday.Main`
+
+### PATH DO JAVA
+
+`
+export JAVA_HOME="$HOME/jdk-12.0.1"
+export CLASSPATH="$JAVA_HOME/lib":$CLASSPATH
+export PATH="$JAVA_HOME/bin":$PATH
+export MANPATH="$JAVA_HOME/man":$MANPATH
+`
