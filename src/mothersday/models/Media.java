@@ -33,7 +33,7 @@ public abstract class Media {
     public Float getGrade() { return this.grade; }
     public boolean getIsVizualized() { return this.vizualized; }
     public MediaTypes getType() { return this.type; }
-    public Date getScheduledDate() { return this.scheduledDate.getTime(); }
+    public String getScheduledDate() { return Long.toString(this.scheduledDate.getTimeInMillis()); }
 
     public abstract void playMedia();
     public abstract void editMedia(String val);

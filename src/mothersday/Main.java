@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.sound.sampled.*;
+import java.text.SimpleDateFormat;
 
 
 
@@ -110,16 +111,29 @@ public class Main
       System.out.println("\nBusca todas as midias por nota menor ou igual a 8");
       System.out.println(mediaController.getMediaByParam("notaLtEq", "8.0"));
 
+      //BUSCA DE MIDIA POR DATA MAIOR QUE ATUAL
+      System.out.println("Pegando midias agendadas");
+      System.out.println(mediaController.getMediaByParam("dateGt", Long.toString(new GregorianCalendar().getTimeInMillis())));
 
+      //
+      //ATIVIDADES ADMIN
+      //
+      currentUser.setAsAdmin(new Admin());
+      //ALTERANDO NOME DE USUARIO mateus
+      System.out.println("\n\nEditando nome de mateus para Mateuzin, com perfil de adm");
+      userController.setName(currentUser, usuarioMateus, "Mateuzin");
+      System.out.println("Buscando usuario editado pelo admin");
+      System.out.println(userController.getUsersByParam("name", "Mateuzin"));
       
+      //BlOQUEANDO USUARIO
+      System.out.println("Bloqueando usuario mateus");
+      userController.toggleBlock(currentUser, usuarioMateus);
+      System.out.println("Usuario mateus isBlocked? "+usuarioMateus.isBlocked());
 
-
-
-
-      //PLAY MEDIA DE AUDIIO
+      //PLAY MEDIAS
       // ((Audio)mediaController.getMediasByParam("type", "Audio").get(0)).playMedia();
-  
-      // new PanelLogin(userController, mediaController);
+      // ((Video)mediaController.getMediasByParam("type", "Frase").get(0)).playMedia();
+      // ((Frase)mediaController.getMediasByParam("type", "Video").get(0)).playMedia();
    }
 }
 

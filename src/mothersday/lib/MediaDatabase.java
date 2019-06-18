@@ -112,12 +112,44 @@ public class MediaDatabase {
                     for(Media media: this.data)
                         if(!media.getIsVizualized() && media.getTitle().contains(val))
                             results.add(media);
+                    break;
                 }
                 case "type": {
                     for(Media media: this.data) 
                         if(media.getType().toString().contains(val.toUpperCase()))
                             results.add(media);
+                    break;
                }
+                case "date": {
+                    for(Media media: this.data) 
+                        if(Long.parseLong(media.getScheduledDate()) == Long.parseLong(val))
+                            results.add(media);
+                    break;
+                }
+                case "dateGt": {
+                    for(Media media: this.data)
+                        if(Long.parseLong(media.getScheduledDate()) > Long.parseLong(val))
+                            results.add(media);
+                    break;
+                }
+                case "dateGtEq": {
+                    for(Media media: this.data) 
+                        if(Long.parseLong(media.getScheduledDate()) >= Long.parseLong(val))
+                            results.add(media);
+                    break;
+                }
+                case "dateLt": {
+                    for(Media media: this.data)
+                        if(Long.parseLong(media.getScheduledDate()) < Long.parseLong(val))
+                            results.add(media);
+                    break;
+                }
+                case "dateLtEq": {
+                    for(Media media: this.data)
+                        if(Long.parseLong(media.getScheduledDate()) <= Long.parseLong(val))
+                            results.add(media);
+                    break;
+                }
                 default: {
                     System.out.println("Parametro de busca incorreto");
                 }
